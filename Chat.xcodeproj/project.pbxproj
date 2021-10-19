@@ -36,6 +36,9 @@
 		08E0592F2715CB74002F50D6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E0592E2715CB74002F50D6 /* Constant.swift */; };
 		08E059312715DA17002F50D6 /* ConversationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E059302715DA17002F50D6 /* ConversationItem.swift */; };
 		08E059332715DA2E002F50D6 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E059322715DA2E002F50D6 /* ConversationModel.swift */; };
+		08F318F5271F2C6B00AD838F /* RegistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F318F4271F2C6B00AD838F /* RegistView.swift */; };
+		08F318F7271F2C7B00AD838F /* RegistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F318F6271F2C7B00AD838F /* RegistViewModel.swift */; };
+		08F318F9271F35C000AD838F /* RegistInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F318F8271F35C000AD838F /* RegistInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		08E0592E2715CB74002F50D6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		08E059302715DA17002F50D6 /* ConversationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationItem.swift; sourceTree = "<group>"; };
 		08E059322715DA2E002F50D6 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		08F318F4271F2C6B00AD838F /* RegistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistView.swift; sourceTree = "<group>"; };
+		08F318F6271F2C7B00AD838F /* RegistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistViewModel.swift; sourceTree = "<group>"; };
+		08F318F8271F35C000AD838F /* RegistInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +150,6 @@
 				0899E79F27157AA200165217 /* AppDelegate.swift */,
 				0899E7A127157AA200165217 /* SceneDelegate.swift */,
 				0899E7A327157AA200165217 /* ContentView.swift */,
-				08E059342715DBED002F50D6 /* views */,
 				0899E7DC2715880200165217 /* resources */,
 				0899E7D927157CC200165217 /* models */,
 				0899E7D127157ABD00165217 /* additions */,
@@ -195,7 +200,7 @@
 		0899E7D027157AB100165217 /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				08E059372717EF8E002F50D6 /* Auth */,
+				08F318F3271F2C0C00AD838F /* Regist */,
 				0899E7D227157AF800165217 /* ListChat */,
 			);
 			path = modules;
@@ -265,26 +270,14 @@
 			path = helpers;
 			sourceTree = "<group>";
 		};
-		08E059342715DBED002F50D6 /* views */ = {
+		08F318F3271F2C0C00AD838F /* Regist */ = {
 			isa = PBXGroup;
 			children = (
+				08F318F4271F2C6B00AD838F /* RegistView.swift */,
+				08F318F8271F35C000AD838F /* RegistInputView.swift */,
+				08F318F6271F2C7B00AD838F /* RegistViewModel.swift */,
 			);
-			path = views;
-			sourceTree = "<group>";
-		};
-		08E059372717EF8E002F50D6 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				08E059382717F18B002F50D6 /* Signin */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		08E059382717F18B002F50D6 /* Signin */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Signin;
+			path = Regist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,7 +426,10 @@
 				0899E7D627157B3000165217 /* ListChatViewModel.swift in Sources */,
 				0899E7D427157B2000165217 /* ListChatView.swift in Sources */,
 				0899E7A027157AA200165217 /* AppDelegate.swift in Sources */,
+				08F318F9271F35C000AD838F /* RegistInputView.swift in Sources */,
 				08E059312715DA17002F50D6 /* ConversationItem.swift in Sources */,
+				08F318F5271F2C6B00AD838F /* RegistView.swift in Sources */,
+				08F318F7271F2C7B00AD838F /* RegistViewModel.swift in Sources */,
 				0899E7DB2715852300165217 /* View+additions.swift in Sources */,
 				0899E7D827157C1700165217 /* Colors+Additions.swift in Sources */,
 				0899E7FC27158C6C00165217 /* Device+Utils.swift in Sources */,
