@@ -14,3 +14,10 @@ func vScale(_ size: CGFloat) -> CGFloat {
 func hScale(_ size: CGFloat) -> CGFloat {
     return size * UIScreen.main.bounds.width / 375
 }
+
+var heightContentView: CGFloat {
+    let window = UIApplication.shared.windows.first
+    let topPadding = window?.safeAreaInsets.top ?? 0
+    let bottomPadding = window?.safeAreaInsets.bottom ?? 0
+    return UIScreen.main.bounds.height - topPadding - bottomPadding
+}

@@ -12,6 +12,7 @@ struct Container: ViewModifier {
         content
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
+        .navigationBarTitle("")
         .navigationBarHidden(true)
         .preferredColorScheme(.dark)
     }

@@ -55,13 +55,13 @@ struct ListChatView: View {
                 })
                 .padding([.leading, .trailing], vScale(Constant.kPadding))
                 
-                ScrollView {
-                    LazyVStack {
-                        ForEach(viewModel.items, id: \.id) { item in
-                            ConversationItem(item: item).padding([.horizontal], 20)
-                        }
-                    }
-                }
+//                ScrollView {
+//                    LazyVStack {
+//                        ForEach(viewModel.items, id: \.id) { item in
+//                            ConversationItem(item: item).padding([.horizontal], 20)
+//                        }
+//                    }
+//                }
                 
                 Spacer()
             }
