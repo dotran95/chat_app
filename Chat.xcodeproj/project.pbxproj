@@ -33,6 +33,9 @@
 		0899E7F52715881A00165217 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0899E7E92715881A00165217 /* Roboto-Regular.ttf */; };
 		0899E7F72715893A00165217 /* Font+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0899E7F62715893A00165217 /* Font+Additions.swift */; };
 		0899E7FC27158C6C00165217 /* Device+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0899E7FB27158C6C00165217 /* Device+Utils.swift */; };
+		08D1CB9B271ED2A000FA5526 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1CB9A271ED2A000FA5526 /* SignInView.swift */; };
+		08D1CBA0271ED3D200FA5526 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1CB9F271ED3D200FA5526 /* SignInViewModel.swift */; };
+		08D1CBB6271ED93000FA5526 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D1CBB5271ED93000FA5526 /* SignUpView.swift */; };
 		08E0592F2715CB74002F50D6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E0592E2715CB74002F50D6 /* Constant.swift */; };
 		08E059312715DA17002F50D6 /* ConversationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E059302715DA17002F50D6 /* ConversationItem.swift */; };
 		08E059332715DA2E002F50D6 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E059322715DA2E002F50D6 /* ConversationModel.swift */; };
@@ -88,6 +91,9 @@
 		0899E7E92715881A00165217 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		0899E7F62715893A00165217 /* Font+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Additions.swift"; sourceTree = "<group>"; };
 		0899E7FB27158C6C00165217 /* Device+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Utils.swift"; sourceTree = "<group>"; };
+		08D1CB9A271ED2A000FA5526 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		08D1CB9F271ED3D200FA5526 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		08D1CBB5271ED93000FA5526 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		08E0592E2715CB74002F50D6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		08E059302715DA17002F50D6 /* ConversationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationItem.swift; sourceTree = "<group>"; };
 		08E059322715DA2E002F50D6 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
@@ -144,7 +150,6 @@
 				0899E79F27157AA200165217 /* AppDelegate.swift */,
 				0899E7A127157AA200165217 /* SceneDelegate.swift */,
 				0899E7A327157AA200165217 /* ContentView.swift */,
-				08E059342715DBED002F50D6 /* views */,
 				0899E7DC2715880200165217 /* resources */,
 				0899E7D927157CC200165217 /* models */,
 				0899E7D127157ABD00165217 /* additions */,
@@ -195,7 +200,8 @@
 		0899E7D027157AB100165217 /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				08E059372717EF8E002F50D6 /* Auth */,
+				08D1CBB4271ED91D00FA5526 /* SignUp */,
+				08D1CB99271ED29000FA5526 /* SignIn */,
 				0899E7D227157AF800165217 /* ListChat */,
 			);
 			path = modules;
@@ -265,26 +271,21 @@
 			path = helpers;
 			sourceTree = "<group>";
 		};
-		08E059342715DBED002F50D6 /* views */ = {
+		08D1CB99271ED29000FA5526 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				08D1CB9A271ED2A000FA5526 /* SignInView.swift */,
+				08D1CB9F271ED3D200FA5526 /* SignInViewModel.swift */,
 			);
-			path = views;
+			path = SignIn;
 			sourceTree = "<group>";
 		};
-		08E059372717EF8E002F50D6 /* Auth */ = {
+		08D1CBB4271ED91D00FA5526 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				08E059382717F18B002F50D6 /* Signin */,
+				08D1CBB5271ED93000FA5526 /* SignUpView.swift */,
 			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		08E059382717F18B002F50D6 /* Signin */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Signin;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0899E7F72715893A00165217 /* Font+Additions.swift in Sources */,
+				08D1CBB6271ED93000FA5526 /* SignUpView.swift in Sources */,
 				0899E7D627157B3000165217 /* ListChatViewModel.swift in Sources */,
 				0899E7D427157B2000165217 /* ListChatView.swift in Sources */,
 				0899E7A027157AA200165217 /* AppDelegate.swift in Sources */,
@@ -437,10 +439,12 @@
 				0899E7DB2715852300165217 /* View+additions.swift in Sources */,
 				0899E7D827157C1700165217 /* Colors+Additions.swift in Sources */,
 				0899E7FC27158C6C00165217 /* Device+Utils.swift in Sources */,
+				08D1CBA0271ED3D200FA5526 /* SignInViewModel.swift in Sources */,
 				08E0592F2715CB74002F50D6 /* Constant.swift in Sources */,
 				0899E7A227157AA200165217 /* SceneDelegate.swift in Sources */,
 				08E059332715DA2E002F50D6 /* ConversationModel.swift in Sources */,
 				0899E7A427157AA200165217 /* ContentView.swift in Sources */,
+				08D1CB9B271ED2A000FA5526 /* SignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

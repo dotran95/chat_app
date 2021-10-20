@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+import SwiftUI
+
+class SignInViewModel: ObservableObject, Identifiable {
+    
+    @Published var username = ""
+    @Published var password = ""
+}
