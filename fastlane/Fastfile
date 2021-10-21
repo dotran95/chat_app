@@ -19,7 +19,13 @@ platform :ios do
   desc "build"
   lane :dev do
     # add actions here: https://docs.fastlane.tools/actions
-    setupCodeSigning("cc50fd77f8", "1", './profile/Dont_Chat_Dev_01.mobileprovision', './profile/Certificates.p12')
+
+    KEYCHAIN_PASS = ENV["KEYCHAIN_PASS"]
+    CETIFICATES_DEV_PASS = ENV["CERTIFICATES_DEV_PASS"]
+    PROVISIONING = './profile/' + ENV["DEV_PROVISIONING"]
+    CETIFICATE = './profile/' + ENV["DEV_CERTIFICATE"]
+
+    setupCodeSigning(KEYCHAIN_PASS, CETIFICATES_DEV_PASS, PROVISIONING, CETIFICATE)
 
     fileName = filename("chat_dev")
 
@@ -27,13 +33,18 @@ platform :ios do
 
     build_app(scheme: "dev", silent: true, clean: true, output_directory: output, export_method: "development", output_name: fileName)
 
-    sendToSlack(fileName)
+    sendToSlack(fileName, 'Dev')
 
   end
 
   lane :product do
     # add actions here: https://docs.fastlane.tools/actions
-    setupCodeSigning("cc50fd77f8", "1", './profile/Dont_Chat_prod_01.mobileprovision', './profile/Certificates.p12')
+    KEYCHAIN_PASS = ENV["KEYCHAIN_PASS"]
+    CETIFICATES_DEV_PASS = ENV["CERTIFICATES_PROD_PASS"]
+    PROVISIONING = './profile/' + ENV["PROD_PROVISIONING"]
+    CETIFICATE = './profile/' + ENV["PROD_CERTIFICATE"]
+
+    setupCodeSigning(KEYCHAIN_PASS, CETIFICATES_DEV_PASS, PROVISIONING, CETIFICATE)
 
     fileName = filename("chat_prod")
 
@@ -41,7 +52,7 @@ platform :ios do
 
     build_app(scheme: "product", silent: true, clean: true, output_directory: output, export_method: "development", output_name: fileName)
 
-    sendToSlack(fileName)
+    sendToSlack(fileName, "Product")
   end
 
 
@@ -50,7 +61,7 @@ platform :ios do
     slack(
       # message with short human friendly message
       message: exception.to_s, 
-      slack_url:"https://hooks.slack.com/services/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", 
+      slack_url:ENV["FASTLANE_SLACK_WEBHOOKS"], 
       success: false, 
       payload: { "Output" => exception.error_info.to_s } 
     )
@@ -87,14 +98,17 @@ def outputDirectory()
   return "./build"
 end
 
-def sendToSlack(fileName)
+def sendToSlack(fileName, target)
+      build = get_build_number(xcodeproj: "Chat.xcodeproj")
+      version = get_version_number(xcodeproj: "Chat.xcodeproj", target: target)
     slack(
-      slack_url:"https://hooks.slack.com/services/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", 
-      message: "Build IPA completed.",
+      slack_url:ENV["FASTLANE_SLACK_WEBHOOKS"], 
+      message: "New version ipa",
       payload: {  # Optional, lets you specify any number of your own Slack attachments.
         "Build Date" => Time.new.to_s,
-        "Built by" => "Mac mini",
-        "FileName" => fileName
+        "FileName" => fileName,
+        "Version" => version,
+        "BuildNumber" => build
       },
     )
 end
