@@ -1,0 +1,100 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "build"
+  lane :dev do
+    # add actions here: https://docs.fastlane.tools/actions
+    setupCodeSigning("cc50fd77f8", "1", './profile/Dont_Chat_Dev_01.mobileprovision', './profile/Certificates.p12')
+
+    fileName = filename("chat_dev")
+
+    output = outputDirectory()
+
+    build_app(scheme: "dev", silent: true, clean: true, output_directory: output, export_method: "development", output_name: fileName)
+
+    sendToSlack(fileName)
+
+  end
+
+  lane :product do
+    # add actions here: https://docs.fastlane.tools/actions
+    setupCodeSigning("cc50fd77f8", "1", './profile/Dont_Chat_prod_01.mobileprovision', './profile/Certificates.p12')
+
+    fileName = filename("chat_prod")
+
+    output = outputDirectory()
+
+    build_app(scheme: "product", silent: true, clean: true, output_directory: output, export_method: "development", output_name: fileName)
+
+    sendToSlack(fileName)
+  end
+
+
+  # error block is executed when a error occurs
+  error do |lane, exception|
+    slack(
+      # message with short human friendly message
+      message: exception.to_s, 
+      slack_url:"https://hooks.slack.com/services/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", 
+      success: false, 
+      payload: { "Output" => exception.error_info.to_s } 
+    )
+  end
+
+end
+
+def setupCodeSigning(keychainPassword, certificatePassword, profilePath, certificatePath)
+  create_keychain(
+    name: "CI",
+    password: keychainPassword,
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    lock_when_sleeps: false
+  )
+  install_provisioning_profile(path: profilePath)
+  import_certificate(
+    certificate_path: certificatePath,
+    certificate_password: certificatePassword,
+    keychain_name: "CI",
+    keychain_password: keychainPassword
+  )
+end
+
+def filename(name)
+    version = get_build_number(xcodeproj: "Chat.xcodeproj")
+    date = Time.now.strftime("%Y%m%d")
+    increment_build_number
+    return name + "_" + date + "_" + version + ".ipa"
+end
+
+def outputDirectory()
+  return "./build"
+end
+
+def sendToSlack(fileName)
+    slack(
+      slack_url:"https://hooks.slack.com/services/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", 
+      message: "Build IPA completed.",
+      payload: {  # Optional, lets you specify any number of your own Slack attachments.
+        "Build Date" => Time.new.to_s,
+        "Built by" => "Mac mini",
+        "FileName" => fileName
+      },
+    )
+end

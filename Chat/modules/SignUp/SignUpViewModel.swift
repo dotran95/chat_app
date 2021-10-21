@@ -15,8 +15,8 @@ class SignUpViewModel: ObservableObject {
     
     
     func callApiSignUp() {
-        let endpoint = AuthEndpoint.signUp(params: SignUpBodyApi(username: username, password: password, fullname: fullname, avatar: nil))
-        let route = Router(endpoint)
+//        let endpoint = AuthEndpoint.signUp(params: SignUpBodyApi(username: username, password: password, fullname: fullname, avatar: nil))
+//        let route = Router(endpoint)
 
     }
 }
