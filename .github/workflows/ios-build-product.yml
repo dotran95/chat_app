@@ -1,0 +1,20 @@
+name: build-ios-prod
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: fastlane product
+        env:
+          PROD_CERTIFICATE: 'Certificates.p12'
+          DEV_CERTIFICATE: 'Certificates.p12'
+          KEYCHAIN_PASS: 'cc50fd77f8'
+          CERTIFICATES_PROD_PASS: '1'
+          CERTIFICATES_DEV_PASS: '1'
+          DEV_PROVISIONING: 'Dont_Chat_Dev_01.mobileprovision'
+          PROD_PROVISIONING: 'Dont_Chat_prod_01.mobileprovision'
+          FASTLANE_SLACK_WEBHOOKS: 'https://hooks.slack.com/services/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'
